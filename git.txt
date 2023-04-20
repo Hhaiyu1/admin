@@ -1,0 +1,26 @@
+这个错误通常是因为你没有正确配置 SSH 公钥而导致的。要解决此问题，需要重新配置 SSH 公钥并将其添加到你的 Github 账户中。
+
+可以按以下步骤来做：
+
+首先，请检查你的电脑上是否已经存在 SSH 密钥。如果你不确定是否有 SSH 密钥，请运行以下命令：
+
+ls -al ~/.ssh
+如果你看到一个名为 id_rsa.pub 或 id_dsa.pub 的文件，则表示你已经拥有密钥。否则，请运行以下命令来创建一个新的密钥:
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+注意，在这条命令中，你需要将"your_email@example.com"替换为你自己的电子邮件地址。
+
+然后在 Github 网站的个人设置中添加你的 SSH 公钥。具体操作如下：
+
+打开 Github 网站并登录你的账号。
+点击页面右上角的头像，并选择“Settings”。
+在左侧面板中，选择“SSH and GPG keys”。
+点击“New SSH key”按钮，然后填写标题和公钥内容。
+复制刚刚生成的公钥并粘贴到文本框中。
+点击“Add SSH key”按钮。
+最后，在命令行中运行以下命令检查 SSH 连接是否正常工作：
+
+ssh -T git@github.com
+如果一切正常，你应该会收到类似以下的消息：
+
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
